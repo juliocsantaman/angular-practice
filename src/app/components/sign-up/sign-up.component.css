@@ -1,0 +1,15 @@
+.form-container {
+  /* background-color: red; */
+}
+
+h1 {
+  padding: 2rem 0rem;
+}
+
+.field-group {
+  margin-bottom: 1rem;
+}
+
+.form__btn-submit {
+  margin: 3rem 0rem;
+}

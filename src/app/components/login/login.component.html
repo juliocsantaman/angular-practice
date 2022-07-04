@@ -1,0 +1,37 @@
+<div class="login-form-container">
+  <form class="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <div class="login-form__field-group">
+      <label for="email" class="form-label">Correo electrónico</label>
+      <input type="text" class="form-control" name="email" formControlName="email">
+      <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']"
+        class="alert alert-danger">
+        Este campo es requerido.
+      </div>
+      <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['pattern']"
+        class="alert alert-danger">
+        Escribe un correo válido.
+      </div>
+    </div>
+
+    <div class="login-form__field-group">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" name="password" formControlName="password">
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']"
+        class="alert alert-danger">
+        Este campo es requerido.
+      </div>
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['minlength']"
+        class="alert alert-danger">
+        El campo contraseña debe tener mínimo 8 caracteres.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success login-form__button login-form__button-login">Iniciar sesión</button>
+
+    <a class="login-form__forget-password text-warning" href="#">Olvidé mi contraseña</a>
+
+    <a class="login-form__button login-form__button-sign-up btn btn-outline-secondary"
+      routerLink="/sign-up">Registrarse</a>
+
+  </form>
+</div>

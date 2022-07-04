@@ -1,0 +1,150 @@
+<div class="container form-container">
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-10">
+        <h1>Registro</h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="field-group">
+          <label for="rfc" class="form-label">RFC</label>
+          <input type="text" class="form-control" name="rfc" formControlName="rfc" maxlength="13">
+          <div *ngIf="signUpForm.get('rfc')?.touched && signUpForm.get('rfc')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="signUpForm.get('rfc')?.touched && signUpForm.get('rfc')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo del RFC debe tener 13 caracteres.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="curp" class="form-label">CURP</label>
+          <input type="text" class="form-control" name="curp" formControlName="curp" maxlength="18">
+          <div *ngIf="signUpForm.get('curp')?.touched && signUpForm.get('curp')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="signUpForm.get('curp')?.touched && signUpForm.get('curp')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo del CURP debe tener 18 caracteres.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" name="name" formControlName="name" maxlength="50">
+          <div *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo nombre debe tener mínimo 3 caracteres.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="firstSurname" class="form-label">Primer apellido</label>
+          <input type="text" class="form-control" name="firstSurname" formControlName="firstSurname" maxlength="50">
+          <div *ngIf="signUpForm.get('firstSurname')?.touched && signUpForm.get('firstSurname')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="signUpForm.get('firstSurname')?.touched && signUpForm.get('firstSurname')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo primer apellido debe tener mínimo 3 caracteres.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="secondSurname" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" name="secondSurname" formControlName="secondSurname" maxlength="50">
+          <div *ngIf="signUpForm.get('secondSurname')?.touched && signUpForm.get('secondSurname')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div
+            *ngIf="signUpForm.get('secondSurname')?.touched && signUpForm.get('secondSurname')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo segundo apellido debe tener mínimo 3 caracteres.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="birthday" class="form-label">Fecha de cumpleaños</label>
+          <input type="date" class="form-control" name="birthday" formControlName="birthday">
+          <div *ngIf="signUpForm.get('birthday')?.touched && signUpForm.get('birthday')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="field-group">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" name="email" formControlName="email">
+          <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.errors?.['pattern']"
+            class="alert alert-danger">
+            Escribe un correo válido.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" name="password" formControlName="password">
+          <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo contraseña debe tener mínimo 8 caracteres.
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+          <input type="password" class="form-control" name="confirmPassword" formControlName="confirmPassword">
+          <div
+            *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.errors?.['required']"
+            class="alert alert-danger">
+            Este campo es requerido.
+          </div>
+          <div
+            *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.errors?.['minlength']"
+            class="alert alert-danger">
+            El campo confirmar contraseña debe tener mínimo 8 caracteres.
+          </div>
+          <div *ngIf="samePasswords()" class="alert alert-danger">
+            Las contraseñas no coinciden.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-2">
+        <button class="btn btn-success w-100 form__btn-submit" type="submit">
+          Enviar
+        </button>
+      </div>
+    </div>
+
+
+  </form>
+
+</div>
